@@ -14,7 +14,7 @@ class WizardUpdateFromGithub(models.TransientModel):
 
     @api.multi
     def button_update_from_github(self):
-        partial_commit = self.env.user.company_id.git_partial_commit_during_analyze
+        partial_commit = self.env.user.company_id.git_partial_commit
         for wizard in self:
             model_obj = self.env[self._context['active_model']]
             for item in model_obj.browse(self._context['active_ids']):

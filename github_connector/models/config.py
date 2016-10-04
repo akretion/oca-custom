@@ -13,15 +13,15 @@ class GithubConnectorConfigSettings(models.TransientModel):
     def _default_company(self):
         return self.env.user.company_id
 
-
     company_id = fields.Many2one(
-        'res.company', 'Company', required=True, default=_default_company
-    )
+        'res.company', 'Company', required=True, default=_default_company)
     github_login = fields.Char(related='company_id.github_login')
     github_password = fields.Char(related='company_id.github_password')
-    github_max_try = fields.Char(related='company_id.github_max_try', default='5')
-    git_source_code_local_path = fields.Char(related='company_id.git_source_code_local_path', default='/tmp/')
-    git_partial_commit_during_analyze = fields.Boolean(related='company_id.git_partial_commit_during_analyze', default=True)
+    github_max_try = fields.Char(related='company_id.github_max_try')
+    git_code_local_path = fields.Char(
+        related='company_id.git_code_local_path')
+    git_partial_commit = fields.Boolean(
+        related='company_id.git_partial_commit')
 
     @api.onchange('company_id')
     def onchange_company_id(self):
@@ -31,5 +31,5 @@ class GithubConnectorConfigSettings(models.TransientModel):
         github_login = company_id.github_login
         github_password = company_id.github_password
         github_max_try = company_id.github_max_try
-        git_source_code_local_path = company_id.git_source_code_local_path
-        git_partial_commit_during_analyze = company_id.git_partial_commit_during_analyze
+        git_code_local_path = company_id.git_code_local_path
+        git_partial_commit = company_id.git_partial_commit

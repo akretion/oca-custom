@@ -12,5 +12,7 @@ class ResCompany(models.Model):
     github_login = fields.Char('Github Login')
     github_password = fields.Char('Github Password')
     github_max_try = fields.Char('Github Max Try', default='5')
-    git_source_code_local_path = fields.Char('Git Source Code Local Path', default='/tmp/')
-    git_partial_commit_during_analyze = fields.Boolean('Git Partial Commit During Analyze', default=True)
+    git_code_local_path = fields.Char(
+        'Git Source Code Local Path', default='/tmp/')
+    git_partial_commit = fields.Boolean(
+        'Git Partial Commit During Analyze', default=True)
