@@ -19,7 +19,6 @@
     ],
     'data': [
         'security/ir.model.access.csv',
-        'data/ir_config_parameter.xml',
         'data/ir_cron.xml',
         'views/view_wizard_load_github_model.xml',
         'views/view_wizard_update_from_github.xml',
@@ -36,6 +35,7 @@
         'views/view_github_team.xml',
         'views/view_github_issue.xml',
         'views/view_github_comment.xml',
+        'views/view_config.xml',
         'views/menu.xml',
     ],
     'demo': [

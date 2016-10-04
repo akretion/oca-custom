@@ -1,10 +1,12 @@
 # -#- coding: utf-8 -#-
 
+from . import config
 from . import github
 from . import abstract_github_model
 from . import abstract_github_model_author
 
 from . import res_partner
+from . import res_company
 from . import ir_values
 
 from . import git_author

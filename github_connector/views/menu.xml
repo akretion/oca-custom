@@ -90,6 +90,12 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         name="Git Authors"
         action="action_git_author_partner_company"/>
 
+    <menuitem id="menu_github_connector_config"
+        name="Github Connector"
+        parent="base.menu_config"
+        sequence="100"
+        action="action_github_connector_config"/>
+
     <!-- Reporting Part -->
     <menuitem id="menu_github_reporting"
         parent="base.menu_reporting"
@@ -135,5 +141,17 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         parent="menu_git_reporting"
         sequence="3"
         action="action_git_commit_by_month_and_serie"/>
+
+    <!--After installation of the module, open the adhoc menu -->
+    <record id="action_github_connector_first" model="ir.actions.client">
+        <field name="name">Open Github Connector Menu</field>
+        <field name="tag">reload</field>
+        <field name="params" eval="{'menu_id': ref('menu_github_connector_config')}"/>
+    </record>
+
+    <record id="base.open_menu" model="ir.actions.todo">
+        <field name="action_id" ref="action_github_connector_first"/>
+        <field name="state">open</field>
+    </record>
 
 </data></openerp>

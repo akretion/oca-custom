@@ -191,9 +191,7 @@ class GithubRepository(models.Model):
 
     @api.multi
     def _analyze_code(self):
-        partial_commit = eval(
-            self.env['ir.config_parameter'].get_param(
-                'git.partial_commit_during_analyze'))
+        partial_commit = self.env.user.company_id.git_partial_commit_during_analyze
         for branch in self:
             path = branch.local_path
             if not os.path.exists(path):
@@ -237,8 +235,7 @@ class GithubRepository(models.Model):
     @api.multi
     @api.depends('complete_name')
     def _compute_local_path(self):
-        path = self.env['ir.config_parameter'].get_param(
-            'git.source_code_local_path')
+        path = self.env.user.company_id.git_source_code_local_path
         for branch in self:
             branch.local_path = path\
                 + branch.repository_id.organization_id.github_login + '/'\

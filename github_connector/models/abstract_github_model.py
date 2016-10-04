@@ -159,8 +159,7 @@ class AbtractGithubModel(models.AbstractModel):
             self.full_update()
 
     def get_base64_image_from_github(self, url):
-        max_try = int(
-            self.env['ir.config_parameter'].get_param('github.max_try'))
+        max_try = int(self.env.user.company_id.github_max_try)
         for i in range(max_try):
             try:
                 stream = urllib.urlopen(url).read()
@@ -188,8 +187,9 @@ class AbtractGithubModel(models.AbstractModel):
 
     @api.multi
     def get_github_for(self, github_type):
+        company = self.env.user.company_id
         return Github(
             github_type,
-            self.env['ir.config_parameter'].get_param('github.login'),
-            self.env['ir.config_parameter'].get_param('github.password'),
-            int(self.env['ir.config_parameter'].get_param('github.max_try')))
+            company.github_login,
+            company.github_password,
+            int(company.github_max_try))

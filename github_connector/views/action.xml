@@ -136,6 +136,14 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
         <field name="target">new</field>
     </record>
 
+    <record id="action_github_connector_config" model="ir.actions.act_window">
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">github.connector.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="name">Github Connector Configuration</field>
+        <field name="target">inline</field>
+    </record>
+
     <!-- Reporting Part -->
     <record id="action_github_issue_by_company" model="ir.actions.act_window">
         <field name="name">Issues + PR by Company</field>
