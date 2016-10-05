@@ -19,6 +19,7 @@
     ],
     'data': [
         'security/ir.model.access.csv',
+        'security/connector_security.xml',
         'data/ir_cron.xml',
         'views/view_wizard_load_github_model.xml',
         'views/view_wizard_update_from_github.xml',

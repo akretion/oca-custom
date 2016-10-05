@@ -7,6 +7,7 @@ import base64
 import urllib
 from datetime import datetime
 import logging
+from openerp import tools
 
 from openerp import api, fields, models, exceptions, _
 from .github import Github
@@ -190,6 +191,6 @@ class AbtractGithubModel(models.AbstractModel):
         company = self.env.user.company_id
         return Github(
             github_type,
-            company.github_login,
-            company.github_password,
+            tools.config['github_login'],
+            tools.config['github_password'],
             int(company.github_max_try))

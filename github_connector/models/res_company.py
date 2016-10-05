@@ -9,10 +9,15 @@ from openerp import models, fields
 class ResCompany(models.Model):
     _inherit = 'res.company'
 
-    github_login = fields.Char('Github Login')
-    github_password = fields.Char('Github Password')
-    github_max_try = fields.Char('Github Max Try', default='5')
+    github_max_try = fields.Char(
+        'Github Max Try',
+        default='5',
+        groups='github_connector.group_github_connector_manager')
     git_code_local_path = fields.Char(
-        'Git Source Code Local Path', default='/tmp/')
+        'Git Source Code Local Path',
+        default='/tmp/',
+        groups='github_connector.group_github_connector_manager')
     git_partial_commit = fields.Boolean(
-        'Git Partial Commit During Analyze', default=True)
+        'Git Partial Commit During Analyze',
+        default=True,
+        groups='github_connector.group_github_connector_manager')
