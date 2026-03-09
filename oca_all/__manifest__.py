@@ -152,6 +152,7 @@
         "partner_statement",
         "project_task_add_very_high",
         "oca_custom",
+        "oca_search_engine",
         "partner_contact_access_link",
         "pdf_xml_attachment",
         "project_role",
