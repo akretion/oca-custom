@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 AKRETION
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <!-- res.partner: Kanban -->
+    <record id="view_res_partner_filter_assign_tree" model="ir.ui.view">
+        <field name="name">res.partner.geo.inherit.list</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+            <field name="grade_id" position="attributes">
+                <attribute name="widget"
+            </field>
+        </field>
+    </record>
+
+    <!-- res.partner: Search -->
+    <record id="view_res_partner_filter" model="ir.ui.view">
+        <field name="name">res.partner.select.oca_sponsor</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+
+        <field name="arch" type="xml">
+            <group position="inside">
+                <filter
+                    name="group_grade_id"
+                    string="Grade"
+                    domain="[('grade_id', '!=', False)]"
+                    context="{'group_by': 'grade_id'}"
+                />
+            </group>
+        </field>
+    </record>
+
+    <!-- res.partner: Form : add "Sponsorship" page -->
+    <record id="view_crm_partner_assign_form" model="ir.ui.view">
+        <field name="name">res.partner.assign.inherit.oca_sponsor</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="website_crm_partner_assign.view_crm_partner_assign_form"/>
+        
+        <field name="arch" type="xml">
+            <!-- Hide page "Partner Assigment" have legacy fields: not used by OCA
+                 and confusing with added "Partnership" page
+            -->
+            <page name="geo_location" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </page>
+            <page name="geo_location" position="before">
+                <page name="oca_sponsor" string="Sponsorship">
+                    <group name="group_partner_activation_review" position="before">
+                        <group name="group_website_sponsor_fields" string="Sponsor website fields">
+                            <group name="left">
+                                <!-- `Partner Level (grade_id)` moved here -->
+                                <field name="is_published" />
+                                <field name="is_integrator" />
+                                <field name="blog_post_ids" widget="many2many_tags" />
+                            </group>
+                            <group name="right">
+                                <field name="website_country_ids" widget="many2many_tags" />
+                                <field name="website_industry_ids" widget="many2many_tags" />
+                                <field name="slug_history_ids" widget="many2many_tags" />
+                            </group>
+                        </group>
+
+                        <group name="group_website_sponsor_description" string="Sponsor website description">
+                            Below description are in plain text, without formatting.
+
+                            <group name="left">
+                                <label for="website_description_sponsor" />
+                                <field name="website_description_sponsor" nolabel="1" colspan="2" />
+                            </group>
+                            <group name="right">
+                                <label for="website_description_why_oca" />
+                                <field name="website_description_why_oca" nolabel="1" colspan="2" />
+                            </group>
+                        </group>
+                    </group>
+                </page>
+            </page>
+
+            <!-- Move `Partner Level (grade_id)` -->
+            <field name="is_published" position="before">
+                <field name="grade_id" position="move" />
+            </field>
+        </field>
+    </record>
+
+</odoo>
