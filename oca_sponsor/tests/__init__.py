@@ -1,2 +1,1 @@
-from . import test_category_schema
-from . import test_category_binding
+from . import test_oca_sponsor
