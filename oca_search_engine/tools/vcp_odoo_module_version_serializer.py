@@ -14,4 +14,6 @@ class VcpOdooModuleVersionSerializer(PydanticModelSerializer):
         return VcpOdooModuleVersion
 
     def serialize(self, record):
-        return self.get_model_class().from_record(record).model_dump(mode="json")
+        return (
+            self.get_model_class().from_record(record).model_dump(mode="json")
+        )

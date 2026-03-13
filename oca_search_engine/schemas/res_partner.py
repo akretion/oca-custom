@@ -1,16 +1,64 @@
 # Copyright 2026 AKRETION
+# @author Arnaud LAYEC <arnaud.layec@akretion.com>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from __future__ import annotations
+from typing import TypedDict 
 
 from extendable_pydantic import StrictExtendableBaseModel
 
-class CommonResPartner(StrictExtendableBaseModel):
+class Countries(TypedDict):
+    code: str
+    label: str
+
+class LogoUrls(TypedDict):
+    alt: str
+    l: str
+    m: str
+    s: str
+
+class SponsorLevel(TypedDict):
+    id: int
+    rank: int
+    name: str
+
+class Industries(TypedDict):
+    name: str
+    description: str | None
+
+class BlogPost(TypedDict):
+    title: str
+    teaser: str
+    relative_url: str
+    cover_url: str
+
+class Sponsor(TypedDict):
+    description_long: str | None
+    description_short: str | None
+    description_why_oca: str | None
+    level: SponsorLevel
+    industries: list[Industries] | None
+    stories: list[BlogPost] | None
+
+class Companies(StrictExtendableBaseModel):
     id: int
     name: str | None = None
     email: str | None = None
     phone: str | None = None
-    is_published: bool
+    # editable fields
+    website: str | None = None
+    is_integrator: bool | None = None
+    countries: list[Countries]
+    logo_urls: LogoUrls
+    # github indicators
+    contributors_count: int
+    contributors_index: int
+    members_count: int
+    modules_count: int
+    # technical website fields
+    url_key: str
+    redirect_url_key: list[str] | None = None
+    # sponsorship
+    sponsorship: Sponsor
 
     @classmethod
     def from_record(cls, record):
@@ -19,56 +67,12 @@ class CommonResPartner(StrictExtendableBaseModel):
             name=record.name or None,
             email=record.email or None,
             phone=record.phone or None,
-        )
-
-class Companies(CommonResPartner):
-    # editable fields
-    website: str | None = None
-    is_integrator: bool | None = None
-    countries: list[dict(code:str, label:str)]
-    logo_urls: dict(alt:str, l:str, m:str, s:str)
-    # github indicators
-    contributors_count: int | None = None
-    contributors_index: int | None = None
-    members_count: int | None = None
-    modules_count: int | None = None
-    # technical website fields
-    url_key: str | None = None
-    redirect_url_key: list[str] | None = None
-    # sponsorship
-    sponsorship: dict(
-        "description_long": str,
-        "description_short": str,
-        "description_why_oca": str,
-        "level": dict(
-            "id": int,
-            "rank": int,
-            "name": str
-        ),
-        "industries": list[
-            dict(
-                "description": str,
-                "name": str
-            )
-        ],
-        "stories": dict(
-            "title": str
-            "teaser": str
-            "relative_url": str,
-            "cover_url": str,
-        ),
-    )
-
-    @classmethod
-    def from_record(cls, record):
-        res = super().from_record(record)
-        return res | cls.model_construct(
             # editable fields
             website=record.website or None,
             is_integrator=record.is_integrator or None,
             countries=[
                 {"code": x["code"], "label": x["name"]}
-                for x in record.website_country_ids.read(["code", "name"])
+                for x in record.country_ids.read(["code", "name"])
             ],
             logo_urls={
                 "alt": record.name,
@@ -77,29 +81,33 @@ class Companies(CommonResPartner):
                 "s": record._get_avatar_url(size=128)
             },
             # github indicators
-            contributors_count=record.contributors_count or None,
-            contributors_index=record.contributors_index or None,
-            members_count=record.members_count or None,
-            modules_count=record.modules_count or None,
+            # contributors_count=record.contributors_count or 0,
+            # contributors_index=record.contributors_index or 0,
+            # members_count=record.members_count or 0,
+            # modules_count=record.modules_count or 0,
+            contributors_count=10,
+            contributors_index=20,
+            members_count=30,
+            modules_count=40,
             # technical website fields
             url_key=record._get_slug() or None,
             redirect_url_key=record.slug_history_ids.mapped("name") or None,
             # sponsorship
             sponsorship={
-                "description_long": record.website_description_sponsor,
-                "description_short": record.website_short_description,
-                "description_why_oca": record.website_description_why_oca,
+                "description_long": record.website_long_description or None,
+                "description_short": record.website_short_description or None,
+                "description_why_oca": record.website_description_why_sponsoring or None,
                 "level": {
                     "id": record.grade_id.id,
                     "name": record.grade_id.name,
-                    "name": record.grade_id.sequence,
+                    "rank": record.grade_id.sequence,
                 },
                 "industries": [
                     {
                         "name": industry["name"],
-                        "description": industry["description"]
+                        "description": industry["description"] or None
                     }
-                    for industry in record.website_industry_ids.read(["name", "description"])
+                    for industry in record.industry_ids.read(["name", "description"])
                 ],
                 "stories": [
                     {

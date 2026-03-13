@@ -20,6 +20,7 @@
     },
     "depends": [
         "connector_typesense",
+        "membership",
         "search_engine_serializer_pydantic",
         "vcp_odoo",
         "vcp_github",
@@ -27,10 +28,16 @@
         # correctly as module are not merged
         "connector_search_engine",
         "vcp_management",
+        # custom
+        "oca_sponsor",
+        "website_oca_integrator",
     ],
     "data": [
         "data/backend_data.xml",
         "data/index_data.xml",
+        "security/ir.model.access.csv",
+        "views/res_partner.xml",
     ],
     "demo": [],
+    "post_init_hook": "post_init_hook",
 }
