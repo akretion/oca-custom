@@ -15,6 +15,7 @@
     "external_dependencies": {
         "python": [
             "extendable_pydantic",
+            "pypandoc",
         ],
         "bin": [],
     },
