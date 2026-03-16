@@ -837,6 +837,7 @@ dependencies = [
     { name = "psycopg2" },
     { name = "pygithub" },
     { name = "pyopenssl" },
+    { name = "pypandoc" },
     { name = "pypdf2" },
     { name = "pyserial" },
     { name = "python-dateutil" },
@@ -922,8 +923,8 @@ requires-dist = [
     { name = "odoo-addon-base-ubl", specifier = "==18.0.*" },
     { name = "odoo-addon-base-unece", specifier = "==18.0.*" },
     { name = "odoo-addon-bi-sql-editor", specifier = "==18.0.*" },
-    { name = "odoo-addon-connector-search-engine", git = "https://github.com/akretion/search-engine?subdirectory=connector_search_engine&branch=18.0-mig-connector_search_engine" },
-    { name = "odoo-addon-connector-typesense", git = "https://github.com/akretion/search-engine?subdirectory=connector_typesense&branch=18.0-mig-connector_typesense" },
+    { name = "odoo-addon-connector-search-engine", specifier = "==18.0.*" },
+    { name = "odoo-addon-connector-typesense", specifier = "==18.0.*" },
     { name = "odoo-addon-crowdfunding", git = "https://github.com/hbrunn/crowdfunding?subdirectory=crowdfunding&branch=18.0-mig-crowdfunding" },
     { name = "odoo-addon-crowdfunding-public-pledge", git = "https://github.com/hbrunn/crowdfunding?subdirectory=crowdfunding_public_pledge&branch=18.0-mig-crowdfunding" },
     { name = "odoo-addon-currency-rate-update", specifier = "==18.0.*" },
@@ -951,7 +952,7 @@ requires-dist = [
     { name = "odoo-addon-report-xlsx", specifier = "==18.0.*" },
     { name = "odoo-addon-report-xlsx-helper", specifier = "==18.0.*" },
     { name = "odoo-addon-sale-loyalty-partner-applicability", specifier = "==18.0.*" },
-    { name = "odoo-addon-search-engine-serializer-pydantic", git = "https://github.com/akretion/search-engine?subdirectory=search_engine_serializer_pydantic&branch=18.0-mig-search_engine_serializer_pydantic" },
+    { name = "odoo-addon-search-engine-serializer-pydantic", specifier = "==18.0.*" },
     { name = "odoo-addon-sentry", specifier = "==18.0.*" },
     { name = "odoo-addon-server-action-mass-edit", specifier = "==18.0.*" },
     { name = "odoo-addon-sql-request-abstract", specifier = "==18.0.*" },
@@ -976,6 +977,7 @@ requires-dist = [
     { name = "psycopg2", specifier = "==2.9.9" },
     { name = "pygithub", specifier = "<2.0.0" },
     { name = "pyopenssl", specifier = "==24.1.0" },
+    { name = "pypandoc" },
     { name = "pypdf2", specifier = "==2.12.1" },
     { name = "pyserial", specifier = "==3.5" },
     { name = "python-dateutil", specifier = "==2.8.2" },
@@ -1441,8 +1443,8 @@ wheels = [
 
 [[package]]
 name = "odoo-addon-connector-search-engine"
-version = "18.0.1.0.0"
-source = { git = "https://github.com/akretion/search-engine?subdirectory=connector_search_engine&branch=18.0-mig-connector_search_engine#5098f1a1f2b9fa0d0fe99a426640e14bb6215ea3" }
+version = "18.0.1.0.0.2"
+source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "odoo" },
     { name = "odoo-addon-base-partition" },
@@ -1451,16 +1453,22 @@ dependencies = [
     { name = "typing-extensions" },
     { name = "unidecode" },
 ]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/44/2f/8b166de6bf710cc873ab5acccdcafeacbcf2cf67064a4a9f0505ae4731fa/odoo_addon_connector_search_engine-18.0.1.0.0.2-py3-none-any.whl", hash = "sha256:55899d359a194a4e237ff3f9afc9f66fc515e3fbcaab2dac3a1241a130c61905", size = 91277, upload-time = "2026-03-10T16:44:17.087Z" },
+]
 
 [[package]]
 name = "odoo-addon-connector-typesense"
-version = "18.0.1.0.0"
-source = { git = "https://github.com/akretion/search-engine?subdirectory=connector_typesense&branch=18.0-mig-connector_typesense#c27439eae62e8de33b8f9a3821d548e4c5f956b9" }
+version = "18.0.1.0.0.3"
+source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "odoo" },
     { name = "odoo-addon-connector-search-engine" },
     { name = "requests" },
     { name = "typesense" },
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/f2/c0/11f925dcb313601df6f41930df25cfdb506672d24b1ccdeb7a46ac48d96b/odoo_addon_connector_typesense-18.0.1.0.0.3-py3-none-any.whl", hash = "sha256:2225f4ec36126a83b3bae51ff28115520e48ddfc1a1783d6a8608ed5936d93a5", size = 63533, upload-time = "2026-03-13T04:06:36.718Z" },
 ]
 
 [[package]]
@@ -1817,13 +1825,16 @@ wheels = [
 
 [[package]]
 name = "odoo-addon-search-engine-serializer-pydantic"
-version = "18.0.1.0.0"
-source = { git = "https://github.com/akretion/search-engine?subdirectory=search_engine_serializer_pydantic&branch=18.0-mig-search_engine_serializer_pydantic#2012e4c894ee4309d3543c7b42a90cd4ef803ba8" }
+version = "18.0.1.0.0.2"
+source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "odoo" },
     { name = "odoo-addon-connector-search-engine" },
     { name = "odoo-addon-pydantic" },
     { name = "pydantic" },
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/dc/15/6e289c431d9d92923f8309c6cce6388d1d3c70b7138d1837d2543a2dc0b1/odoo_addon_search_engine_serializer_pydantic-18.0.1.0.0.2-py3-none-any.whl", hash = "sha256:aebe15f1f79e650215fa5ba81d1cc9436f5688de7cf052211a99b8f211b88f99", size = 28349, upload-time = "2026-03-10T21:25:20.088Z" },
 ]
 
 [[package]]
@@ -2289,6 +2300,15 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/91/a8/cbeec652549e30103b9e6147ad433405fdd18807ac2d54e6dbb73184d8a1/pyOpenSSL-24.1.0.tar.gz", hash = "sha256:cabed4bfaa5df9f1a16c0ef64a0cb65318b5cd077a7eda7d6970131ca2f41a6f", size = 179671, upload-time = "2024-03-09T23:16:25.539Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/54/a7/2104f674a5a6845b04c8ff01659becc6b8978ca410b82b94287e0b1e018b/pyOpenSSL-24.1.0-py3-none-any.whl", hash = "sha256:17ed5be5936449c5418d1cd269a1a9e9081bc54c17aed272b45856a3d3dc86ad", size = 56945, upload-time = "2024-03-09T23:16:23.44Z" },
+]
+
+[[package]]
+name = "pypandoc"
+version = "1.17"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/ea/d6/410615fc433e5d1eacc00db2044ae2a9c82302df0d35366fe2bd15de024d/pypandoc-1.17.tar.gz", hash = "sha256:51179abfd6e582a25ed03477541b48836b5bba5a4c3b282a547630793934d799", size = 69071, upload-time = "2026-03-14T22:39:07.21Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/0c/86/e2ffa604eacfbec3f430b1d850e7e04c4101eca1a5828f9ae54bf51dfba4/pypandoc-1.17-py3-none-any.whl", hash = "sha256:01fdbffa61edb9f8e82e8faad6954efcb7b6f8f0634aead4d89e322a00225a67", size = 23554, upload-time = "2026-03-14T22:38:46.007Z" },
 ]
 
 [[package]]
