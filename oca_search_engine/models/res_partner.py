@@ -15,6 +15,10 @@ class ResPartner(models.Model):
         compute="_compute_can_be_published",
         search="_search_can_be_published",
     )
+    mail_group_member_ids = fields.One2many(
+        comodel_name="mail.group.member",
+        inverse_name="partner_id",
+    )
     slug_history_ids = fields.One2many(
         comodel_name="res.partner.slug",
         inverse_name="partner_id",

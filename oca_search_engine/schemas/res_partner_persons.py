@@ -23,7 +23,7 @@ class Role(TypedDict):
     id: int
     name: str
 
-class Members(StrictExtendableBaseModel):
+class Persons(StrictExtendableBaseModel):
     id: int
     name: str
     company_id: int | None
@@ -33,7 +33,7 @@ class Members(StrictExtendableBaseModel):
     # role & psc
     roles: list[Role]
     psc: int
-    psc_list = list[Team] | None
+    psc_list: list[Team] | None
     work_group_list: list[Team] | None
     # github
     username: str
@@ -53,7 +53,7 @@ class Members(StrictExtendableBaseModel):
                 bool(record.parent_id.is_company) and record.parent_id.id
                 or None
             ),
-            company=record.commercial_company_name,
+            company=record.commercial_company_name or None,
             contact=cls._get_contact(record),
             country=cls._get_country(record),
             # role & psc
@@ -62,8 +62,8 @@ class Members(StrictExtendableBaseModel):
             psc_list=cls._get_psc_list(record) or None,
             work_group_list=cls._get_work_group_list(record) or None,
             # github, TODO @sebastienbeau
-            username=record.github_username or None,
-            avatar_url=record.github_avatar_url or None,
+            username="record.github_username" or None,
+            avatar_url="record.github_avatar_url" or None,
             # github indicators
             translations=0,
             collaborator_index=0,
@@ -80,12 +80,17 @@ class Members(StrictExtendableBaseModel):
             "phone": record.phone or record.mobile or None,
             "website": record.website or None,
             "city": (
-                "%(city)s %(state_code)s %(zip)s" %
-                (record.city, record.state_id.code, record.zip)
+                "%(city)s %(state_code)s %(zip)s" % {
+                    "city": record.city,
+                    "state_code": record.state_id.code,
+                    "zip": record.zip,
+                }
             ).strip() or None,
             "address": (
-                "%(street)s\n%(street2)s" %
-                (record.street, record.street2)
+                "%(street)s\n%(street2)s" % {
+                    "street": record.street,
+                    "street2": record.street2,
+                }
             ).strip() or None,
         }
 
@@ -98,6 +103,7 @@ class Members(StrictExtendableBaseModel):
 
     @classmethod
     def _get_psc_list(cls, record):
+        return []
         return [
             {
                 "id": x["id"],
@@ -120,10 +126,11 @@ class Members(StrictExtendableBaseModel):
 
     @classmethod
     def _get_work_group_list(cls, record):
+        groups = record.mail_group_member_ids.mail_group_id.filtered("is_publish")
         return [
             {
                 "id": x["id"],
                 "name": x["name"],
                 "description": x["description"],
-            } for x in record.membership_channel_ids.read(["name", "description"])
+            } for x in groups.read(["name", "description"])
         ] or None

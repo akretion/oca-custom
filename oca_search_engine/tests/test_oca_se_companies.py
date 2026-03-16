@@ -23,7 +23,7 @@ class TestOcaCompaniesSearchEngine(TestOcaSponsor):
             "email": "contact@fullsponsor.com",
             "website_long_description": "We are a great sponsor.",
             "website_description_why_sponsoring": "Because OCA rocks.",
-            "industry_ids": [(6, 0, [self.industry_a.id, self.industry_b.id])],
+            "sponsor_industry_ids": [(6, 0, [self.industry_a.id, self.industry_b.id])],
         })
         data = Companies.from_record(sponsor).model_dump(mode="json")["sponsorship"]
 

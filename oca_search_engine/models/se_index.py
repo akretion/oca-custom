@@ -7,6 +7,7 @@ from odoo.exceptions import ValidationError
 
 from ..tools import (
     CompaniesSerializer,
+    PersonsSerializer,
     VcpOdooModuleVersionSerializer,
 )
 
@@ -17,11 +18,13 @@ class SeIndex(models.Model):
     serializer_type = fields.Selection(
         selection_add=[
             ("vcp_odoo_module_version_exports", "Odoo Modules"),
-            ("companies_exports", "Sponsors & integrators (companies)"),
+            ("companies_exports", "Companies (sponsors & integrators)"),
+            ("persons_exports", "Persons (members & contributors)"),
         ],
         ondelete={
             "vcp_odoo_module_version_exports": "cascade",
             "companies_exports": "cascade",
+            "persons_exports": "cascade",
         },
     )
 
@@ -29,6 +32,7 @@ class SeIndex(models.Model):
     def _check_model(self):
         mapped_models = {
             "companies_exports": "res.partner",
+            "persons_exports": "res.partner",
             "vcp_odoo_module_version_exports": "vcp.odoo.module.version",
         }
         for se_index in self:
@@ -40,6 +44,7 @@ class SeIndex(models.Model):
         self.ensure_one()
         mapped_serializer = {
             "companies_exports": CompaniesSerializer(),
+            "persons_exports": PersonsSerializer(),
             "vcp_odoo_module_version_exports": VcpOdooModuleVersionSerializer()
         }
         return (

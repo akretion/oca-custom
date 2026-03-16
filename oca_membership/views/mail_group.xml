@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 AKRETION
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <!-- New entry menu 'Communities' in Membership app -->
+    <menuitem
+        name="Communities"
+        id="menu_membership_mail_group"
+        sequence="30"
+        parent="membership.menu_association"
+        action="mail_group.mail_group_action"
+    />
+
+</odoo>

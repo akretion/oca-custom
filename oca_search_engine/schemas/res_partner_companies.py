@@ -72,7 +72,7 @@ class Companies(StrictExtendableBaseModel):
             is_integrator=record.is_integrator or None,
             countries=[
                 {"code": x["code"], "label": x["name"]}
-                for x in record.country_ids.read(["code", "name"])
+                for x in record.sponsor_country_ids.read(["code", "name"])
             ],
             logo_urls={
                 "alt": record.name,
@@ -107,7 +107,7 @@ class Companies(StrictExtendableBaseModel):
                         "name": industry["name"],
                         "description": industry["description"] or None
                     }
-                    for industry in record.industry_ids.read(["name", "description"])
+                    for industry in record.sponsor_industry_ids.read(["name", "description"])
                 ],
                 "stories": [
                     {

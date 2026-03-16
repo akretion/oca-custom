@@ -19,18 +19,5 @@
             </xpath>
         </field>
     </record>
-    
-    <!-- res.partner Form (membership) -->
-    <record model="ir.ui.view" id="view_partner_form">
-        <field name="name">res.partner.form.inherit</field>
-        <field name="model">res.partner</field>
-        <field name="inherit_id" ref="base.view_partner_form"/>
-        
-        <field name="arch" type="xml">
-            <xpath expr="//group/group" position="inside">
-                <field name="membership_channel_ids" widget="many2many_tags" />
-            </xpath>
-        </field>
-    </record>
 
 </odoo>

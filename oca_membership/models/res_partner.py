@@ -12,11 +12,6 @@ class ResPartner(models.Model):
         help="Role for next subscribed membership",
         default=lambda self: self._default_membership_category_id(),
     )
-    membership_channel_ids = fields.Many2many(
-        string="Work Groups",
-        related="channel_ids",
-        domain=[("is_membership_work_group", "=", True)]
-    )
 
     def _default_membership_category_id(self):
         return self.env["membership.membership_category"].search([], limit=1).id

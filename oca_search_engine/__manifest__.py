@@ -41,6 +41,7 @@
         # security
         "security/ir.model.access.csv",
         # views
+        "views/mail_group.xml",
         "views/res_partner.xml",
     ],
     "demo": [],

@@ -55,8 +55,20 @@ class TestOcaSponsor(TransactionCase):
         self.assertIn(self.country_ch, countries) # kept
 
     @users("sponsor")
-    def test_industry_id(self):
-        self.sponsor.sponsor_industry_ids = self.industry_a + self.industry_b
+    def test_industry_id_to_ids(self):
+        """Ensure `industry_id` is synced in `industry_ids`"""
+        self.sponsor.sponsor_industry_ids = False
+        self.sponsor.industry_id = self.industry_a
+        self.assertEqual(self.sponsor.sponsor_industry_ids, self.industry_a)
+
+    def test_industry_ids_to_id(self):
+        """Ensure `industry_id` is defined (if empty) from `industry_ids`"""
+        self.sponsor.industry_id = False
+        self.sponsor.sponsor_industry_ids = self.industry_a
+        self.assertEqual(self.sponsor.industry_id, self.industry_a)
+
+        # Add another industry: no change
+        self.sponsor.sponsor_industry_ids |= self.industry_b
         self.assertEqual(self.sponsor.industry_id, self.industry_a)
 
     @users("sponsor")

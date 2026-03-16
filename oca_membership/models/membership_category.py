@@ -11,7 +11,7 @@ class MembershipCategory(models.Model):
     sequence = fields.Integer("Sequence")
     active = fields.Boolean("Active", default=True)
     implied_ids = fields.Many2many(
-        string="Sub roles",
+        string="Implied roles",
         comodel_name="membership.membership_category",
         relation="membership_category_implied_rel",
         column1="category_id",
