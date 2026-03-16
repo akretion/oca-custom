@@ -12,6 +12,9 @@
     ],
     "license": "AGPL-3",
     "depends": [
+        # Test/dev
+        "database_cleanup",
+        "database_size",
         # Odoo
         "account",
         "account_payment",
