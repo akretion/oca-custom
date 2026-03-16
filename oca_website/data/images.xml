@@ -6,7 +6,6 @@
     <field name="logo" type="base64" file="oca_website/static/img/content/logo.png"/>
 </record>
 
-<!-- changer les noms des images -->
 
 
 </odoo>
