@@ -1,0 +1,33 @@
+
+{
+    "name": "OCA Website Theme",
+    "version": "18.0.1.0.0",
+    "category": "Theme/eCommerce",
+    "summary": "OCA Website Theme",
+    "description": "",
+    "author": "Akretion",
+    "company": "Akretion",
+    "maintainer": "Akretion",
+    "website": "https://www.akretion.com",
+    'depends': [
+        'website',
+    ],
+    "data": [
+        'data/images.xml',       
+    ],
+    'images': [
+        'oca_website/static/description/theme_screenshot.png'
+    ],
+    'assets': {
+        'web._assets_primary_variables': [
+            'oca_website/static/src/scss/primary_variables.scss',
+        ],
+         'web.assets_frontend': [
+              'oca_website/static/src/scss/layout/website_theme.scss',
+         ],
+    },
+    'license': 'LGPL-3',
+    'installable': True,
+    'auto_install': False,
+    'application': False,
+}
