@@ -30,21 +30,22 @@ class VcpRule(models.Model):
         vals["readme_fragments"] = {}
         if readme_path.exists():
             for item in readme_path.iterdir():
-                filename = item.stem.lower()
-                extension = item.suffix
-                data = item.read_text()
-                if not data:
-                    continue
-                if extension == ".md":
-                    vals["readme_fragments"][filename] = data
-                elif extension == ".rst":
-                    vals["readme_fragments"][filename] = pypandoc.convert_text(
-                        data,
-                        format="rst",
-                        to=PANDOC_MARKDOWN_FORMAT,
-                        extra_args=["--shift-heading-level=1"],
-                        sandbox=True,
-                    )
-                else:
-                    _logger.error("Unsupported format in readme path %s".format(item))
+                if item.is_file():
+                    filename = item.stem.lower()
+                    extension = item.suffix
+                    data = item.read_text()
+                    if not data:
+                        continue
+                    if extension == ".md":
+                        vals["readme_fragments"][filename] = data
+                    elif extension == ".rst":
+                        vals["readme_fragments"][filename] = pypandoc.convert_text(
+                            data,
+                            format="rst",
+                            to=PANDOC_MARKDOWN_FORMAT,
+                            extra_args=["--shift-heading-level=1"],
+                            sandbox=True,
+                        )
+                    else:
+                        _logger.error("Unsupported format in readme path %s".format(item))
         return vals
