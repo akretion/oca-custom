@@ -30,7 +30,7 @@
 
     <!-- res.partner Kanban -->
     <record model="ir.ui.view" id="res_partner_kanban_view">
-        <field name="name">res.partner.kanban</field>
+        <field name="name">res.partner.kanban.oca_sponsor</field>
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.res_partner_kanban_view" />
 
@@ -43,7 +43,7 @@
             
     <!-- res.partner Form : add "Sponsorship" page -->
     <record id="view_partner_form" model="ir.ui.view">
-        <field name="name">res.partner.form.inherit</field>
+        <field name="name">res.partner.form.oca_sponsor</field>
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="membership.view_partner_form"/>
 
@@ -53,10 +53,6 @@
                     Sponsor information are pending a review to be updated on the website.
                 </div>
             </sheet>
-
-            <field name="industry_id" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </field>
 
             <!-- Add dedicated "Sponsorship" page -->
             <page name="membership" position="after">
@@ -77,8 +73,8 @@
                             <field name="blog_post_ids" widget="many2many_tags"
                                 context="{'default_author_id': id}"
                             />
-                            <field name="country_ids" widget="many2many_tags" />
-                            <field name="industry_ids" widget="many2many_tags" />
+                            <field name="sponsor_country_ids" widget="many2many_tags" />
+                            <field name="sponsor_industry_ids" widget="many2many_tags" />
                         </group>
                         <group colspan="7">
                             <label for="sponsorship_line_ids" />

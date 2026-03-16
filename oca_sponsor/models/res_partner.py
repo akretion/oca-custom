@@ -12,11 +12,11 @@ SPONSOR_WEBSITE_FIELDS = {
     "email",
     "phone",
     "website",
-    "country_id", "country_ids",
+    "country_id", "sponsor_country_ids",
     "website_short_description",
     "website_long_description",
     "website_description_why_sponsoring",
-    "industry_id", "industry_ids",
+    "industry_id", "sponsor_industry_ids",
     "avatar_1920", "avatar_1024", "avatar_512", "avatar_256", "avatar_128",
 }
 
@@ -43,13 +43,13 @@ class ResPartner(models.Model):
         inverse_name="partner_id",
     )
     # Website fields
-    country_ids = fields.Many2many(
+    sponsor_country_ids = fields.Many2many(
         comodel_name="res.country",
         relation="res_partner_country_rel",
         column1="partner_id",
         column2="country_id",
         string="Countries",
-        compute="_compute_country_ids",
+        compute="_compute_sponsor_country_ids",
         store=True,
         readonly=False,
     )
@@ -58,12 +58,15 @@ class ResPartner(models.Model):
         store=True,
         readonly=False,
     )
-    industry_ids = fields.Many2many(
+    sponsor_industry_ids = fields.Many2many(
         comodel_name="res.partner.industry",
         relation="res_partner_partner_industry_rel",
         column1="partner_id",
         column2="industry_id",
         string="Industries",
+        compute="_compute_sponsor_industry_ids",
+        store=True,
+        readonly=False,
     )
     website_long_description = fields.Text(
         string="Sponsor long description",
@@ -85,35 +88,43 @@ class ResPartner(models.Model):
     def _compute_is_sponsor(self):
         for partner in self:
             partner.is_sponsor = bool(partner.grade_id)
-
     @api.model
     def _search_is_sponsor(self, operator, value):
         if operator not in ["=", "!="] or not isinstance(value, bool):
             raise NotImplementedError("Operation not supported.")
-
         _not = []
         if operator == "!=" and value or operator == "=" and not value:
             _not = [NOT_OPERATOR]
         return _not + [("grade_id", "!=", False)]
     
-    @api.depends("country_id")
-    def _compute_country_ids(self):
-        for partner in self:
-            old, new = partner._origin.country_id, partner.country_id
-            if not new in partner.country_ids:
-                partner.country_ids |= new
-            if old != new and old in partner.country_ids:
-                partner.country_ids -= old
+    @api.depends("country_id", "grade_id")
+    def _compute_sponsor_country_ids(self):
+        """Put new `country_id` in `sponsor_country_ids`"""
+        self._compute_sponsor_field_ids("country_id")
     
-    @api.depends("industry_ids")
+    @api.depends("sponsor_industry_ids", "grade_id")
     def _compute_industry_id(self):
-        """In view, `industry_id` is replaced by `industry_ids`.
-        This compute manage retro-compatibility"""
+        """`industry_id`, if empty, is filled in by `sponsor_industry_ids`"""
         for partner in self:
-            industries = partner.industry_ids
+            industries = partner.sponsor_industry_ids
             if industries and partner.industry_id not in industries:
                 partner.industry_id = fields.first(industries)
-
+    
+    @api.depends("industry_id", "grade_id")
+    def _compute_sponsor_industry_ids(self):
+        """Put new `industry_id` in `sponsor_industry_ids`"""
+        self._compute_sponsor_field_ids("industry_id")
+    
+    def _compute_sponsor_field_ids(self, field):
+        """Called for both `sponsor_country_ids` and `sponsor_industry_ids`"""
+        for sponsor in self.filtered(lambda x: x.is_sponsor):
+            sponsor_field = "sponsor_" + field + "s"
+            old, new = sponsor._origin[field], sponsor[field]
+            if not new in sponsor[sponsor_field]:
+                sponsor[sponsor_field] |= new
+            if old != new and old in sponsor[sponsor_field]:
+                sponsor[sponsor_field] -= old
+    
     #====== CRUD ======#
     def write(self, vals):
         """Set in review the sponsor whose relevant data changed"""
