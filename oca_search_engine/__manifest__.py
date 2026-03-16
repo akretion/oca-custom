@@ -30,12 +30,17 @@
         "vcp_management",
         # custom
         "oca_sponsor",
+        "oca_membership",
         "website_oca_integrator",
     ],
     "data": [
+        # data
         "data/backend_data.xml",
         "data/index_data.xml",
+        "data/membership_category_data.xml",
+        # security
         "security/ir.model.access.csv",
+        # views
         "views/res_partner.xml",
     ],
     "demo": [],

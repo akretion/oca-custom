@@ -2,11 +2,11 @@
 # @author Arnaud LAYEC <arnaud.layec@akretion.com>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from typing import TypedDict 
+from typing import TypedDict
 
 from extendable_pydantic import StrictExtendableBaseModel
 
-class Countries(TypedDict):
+class Country(TypedDict):
     code: str
     label: str
 
@@ -41,13 +41,13 @@ class Sponsor(TypedDict):
 
 class Companies(StrictExtendableBaseModel):
     id: int
-    name: str | None = None
-    email: str | None = None
-    phone: str | None = None
+    name: str | None
+    email: str | None
+    phone: str | None
     # editable fields
-    website: str | None = None
-    is_integrator: bool | None = None
-    countries: list[Countries]
+    website: str | None
+    is_integrator: bool | None
+    countries: list[Country]
     logo_urls: LogoUrls
     # github indicators
     contributors_count: int
@@ -56,9 +56,9 @@ class Companies(StrictExtendableBaseModel):
     modules_count: int
     # technical website fields
     url_key: str
-    redirect_url_key: list[str] | None = None
+    redirect_url_key: list[str] | None
     # sponsorship
-    sponsorship: Sponsor
+    sponsorship: Sponsor | None
 
     @classmethod
     def from_record(cls, record):
@@ -93,7 +93,7 @@ class Companies(StrictExtendableBaseModel):
             url_key=record._get_slug() or None,
             redirect_url_key=record.slug_history_ids.mapped("name") or None,
             # sponsorship
-            sponsorship={
+            sponsorship=None if not record.is_sponsor else {
                 "description_long": record.website_long_description or None,
                 "description_short": record.website_short_description or None,
                 "description_why_oca": record.website_description_why_sponsoring or None,

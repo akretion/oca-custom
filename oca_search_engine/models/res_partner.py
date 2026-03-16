@@ -23,7 +23,7 @@ class ResPartner(models.Model):
              " partner URL page in the website. Keeping history helps to redirect"
              " former company URL to the new one."
     )
-
+    
     def _add_to_oca_search_engine(self):
         """Add records or update fields in the index"""
         to_synch = self.filtered(lambda x: x._filter_add_to_oca_search_engine())
