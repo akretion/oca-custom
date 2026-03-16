@@ -788,6 +788,8 @@ dependencies = [
     { name = "odoo-addon-crowdfunding" },
     { name = "odoo-addon-crowdfunding-public-pledge" },
     { name = "odoo-addon-currency-rate-update" },
+    { name = "odoo-addon-database-cleanup" },
+    { name = "odoo-addon-database-size" },
     { name = "odoo-addon-date-range" },
     { name = "odoo-addon-date-range-account" },
     { name = "odoo-addon-disable-odoo-online" },
@@ -927,12 +929,13 @@ requires-dist = [
     { name = "odoo-addon-crowdfunding", git = "https://github.com/hbrunn/crowdfunding?subdirectory=crowdfunding&branch=18.0-mig-crowdfunding" },
     { name = "odoo-addon-crowdfunding-public-pledge", git = "https://github.com/hbrunn/crowdfunding?subdirectory=crowdfunding_public_pledge&branch=18.0-mig-crowdfunding" },
     { name = "odoo-addon-currency-rate-update", specifier = "==18.0.*" },
+    { name = "odoo-addon-database-cleanup", specifier = "==18.0.*" },
+    { name = "odoo-addon-database-size", specifier = "==18.0.*" },
     { name = "odoo-addon-date-range", specifier = "==18.0.*" },
     { name = "odoo-addon-date-range-account", specifier = "==18.0.*" },
     { name = "odoo-addon-disable-odoo-online", specifier = "==18.0.*" },
     { name = "odoo-addon-document-knowledge", specifier = "==18.0.*" },
     { name = "odoo-addon-document-page", specifier = "==18.0.*" },
-    { name = "odoo-addon-extendable", specifier = "==18.0.*" },
     { name = "odoo-addon-github-connector", specifier = "==18.0.*" },
     { name = "odoo-addon-github-connector-oca", git = "https://github.com/Therp/interface-github?subdirectory=github_connector_oca&branch=18.0-mig-github_connector_oca" },
     { name = "odoo-addon-github-connector-odoo", specifier = "==18.0.*" },
@@ -1491,6 +1494,28 @@ dependencies = [
 ]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/b7/7e/d17283c919afe653dc786807a8c20e4b5fa438cf6be3c31e9c623cd027a7/odoo_addon_currency_rate_update-18.0.1.0.1.15-py3-none-any.whl", hash = "sha256:ffe96c78c728c03d2780f5033663648794731e9151a8202ad86bc09ac7d0fc22", size = 245564, upload-time = "2025-11-27T02:51:35.641Z" },
+]
+
+[[package]]
+name = "odoo-addon-database-cleanup"
+version = "18.0.1.0.2.5"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "odoo" },
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/03/67/8c33f5a163617f7a5a50542895afc4f5f3462d1552b300b5b5b18516f98f/odoo_addon_database_cleanup-18.0.1.0.2.5-py3-none-any.whl", hash = "sha256:0deefe0addc8102cbbdf3542aae3a2f2517182ef9547195ebae2d65f0624c347", size = 254554, upload-time = "2026-01-23T04:22:09.503Z" },
+]
+
+[[package]]
+name = "odoo-addon-database-size"
+version = "18.0.1.0.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "odoo" },
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/69/a8/f53b6b465b22b5d431e93bcc21541c6b958a3c0aa34dabda516a78e60f81/odoo_addon_database_size-18.0.1.0.2-py3-none-any.whl", hash = "sha256:18d661d234b9a1c7b76da45f625e52a49e50e1b8339c53bc024a328c85396e21", size = 240598, upload-time = "2025-10-01T10:52:39.338Z" },
 ]
 
 [[package]]
