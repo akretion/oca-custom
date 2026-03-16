@@ -793,7 +793,6 @@ dependencies = [
     { name = "odoo-addon-disable-odoo-online" },
     { name = "odoo-addon-document-knowledge" },
     { name = "odoo-addon-document-page" },
-    { name = "odoo-addon-extendable" },
     { name = "odoo-addon-github-connector" },
     { name = "odoo-addon-github-connector-oca" },
     { name = "odoo-addon-github-connector-odoo" },
@@ -1549,18 +1548,6 @@ dependencies = [
 ]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/92/5a/5f2957ed64a1a0ff78af8cd65859987990fdf6e8f35e1e7ca4f16068ffc1/odoo_addon_document_page-18.0.2.1.0.1-py3-none-any.whl", hash = "sha256:7382cfe55a696fc39ace4d571d24674a08f0e7ec4f7b961050b92a8b1e7ec4b3", size = 920357, upload-time = "2025-12-18T03:10:32.833Z" },
-]
-
-[[package]]
-name = "odoo-addon-extendable"
-version = "18.0.1.0.2.1"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "extendable" },
-    { name = "odoo" },
-]
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/c6/4a/591abe6ef0252f038d6eabf219736f42ec788a5d45ca4d3a15af0f8a3e40/odoo_addon_extendable-18.0.1.0.2.1-py3-none-any.whl", hash = "sha256:43302895abfa8ec26ff3ade99e16e7b75664e88559112c9c1ef7ce153ec0e9ae", size = 25312, upload-time = "2026-01-05T07:53:41.343Z" },
 ]
 
 [[package]]
