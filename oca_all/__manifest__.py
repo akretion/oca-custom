@@ -170,6 +170,8 @@
         "web_widget_dropdown_dynamic",
         "website_oca_integrator",
         "website_sale_hide_empty_category",
+        #custom
+        "oca_website",
         "website_sale_oca_apps",
     ],
     "installable": True,
