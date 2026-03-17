@@ -12,14 +12,15 @@ $o-website-values-palettes: (
         "footer": 3,
 
         //hedings, margins and line heights
-        "font-size-base": 16px,
-        "body-line-height": 1.5,
-        "headings-line-height": 1.2,
-        "paragraph-margin-top": 0,
-        "paragraph-margin-bottom": 16px,
-        "headings-margin-top": 0,
-        "headings-margin-bottom": 0.5rem,
-    ),
+
+        'font-size-base': 16px,
+        'body-line-height': 1.5,
+        'headings-line-height': 1.2,
+        'paragraph-margin-top': 0,
+        'paragraph-margin-bottom': 16px,
+        'headings-margin-top': 0,
+        'headings-margin-bottom': 16px,
+   ),
 );
 
 // Fonts
@@ -41,13 +42,27 @@ $o-theme-font-configs: (
 $o-color-palettes: map-merge(
     $o-color-palettes,
     (
-        "oca_website": (
-            "o-color-1": #141a46,
-            "o-color-2": #a4b0f1,
-            "o-color-3": #fc624d,
-            "o-color-4": #ffffff,
-            "o-color-5": #2a2a2a,
-            "o-color-6": #fff6f5,
+        'oca_website': (
+            'o-color-1': #141A46,
+            'o-color-2': #A4B0F1,
+            'o-color-3': #FC624D,
+            'o-color-4': #FFFFFF,
+            'o-color-5': #2a2a2a,
+            'o-color-6': #fff6f5,
+            
+            'o-cc1-bg': 'o-color-4',
+            'o-cc1-text': 'o-color-1',
+            'o-cc1-headings': 'o-color-1',
+            'o-cc1-link': 'o-color-1',
+            'o-cc1-btn-primary': 'o-color-1',
+            'o-cc1-btn-secondary': 'o-color-3',
+             
+            'o-cc2-bg': 'o-color-6',
+            'o-cc2-text': 'o-color-1',
+            'o-cc2-headings': 'o-color-3',
+            'o-cc2-link': 'o-color-1',
+            'o-cc2-btn-primary': 'o-color-1',
+            'o-cc2-btn-secondary': 'o-color-3',
 
             "o-cc1-bg": "o-color-4",
             "o-cc1-text": "o-color-1",
