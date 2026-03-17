@@ -9,7 +9,7 @@ from odoo import models
 class VcpOdooModuleVersion(models.Model):
     _name = "vcp.odoo.module.version"
     _inherit = ["vcp.odoo.module.version", "se.indexable.record"]
-
+    
     def _add_to_oca_search_engine(self):
         self._add_to_index(self.env.ref("oca_search_engine.oca_typesense_index_module"))
 
