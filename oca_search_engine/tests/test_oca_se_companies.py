@@ -2,10 +2,12 @@
 # @author Arnaud LAYEC <arnaud.layec@akretion.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
+
 from odoo.addons.oca_sponsor.tests.test_oca_sponsor import (
     TestOcaSponsor
 )
-from ..schemas import Companies
+from ..schemas import Company
+
 
 class TestOcaCompaniesSearchEngine(TestOcaSponsor):
     @classmethod
@@ -25,7 +27,7 @@ class TestOcaCompaniesSearchEngine(TestOcaSponsor):
             "website_description_why_sponsoring": "Because OCA rocks.",
             "sponsor_industry_ids": [(6, 0, [self.industry_a.id, self.industry_b.id])],
         })
-        data = Companies.from_record(sponsor).model_dump(mode="json")["sponsorship"]
+        data = Company.from_record(sponsor).model_dump(mode="json")["sponsorship"]
 
         # Test a few data
         self.assertEqual(data["level"]["name"], self.grade.name)

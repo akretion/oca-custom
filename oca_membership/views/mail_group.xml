@@ -3,6 +3,32 @@
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 <odoo>
 
+    <!-- List -->
+    <record id="mail_group_view_list" model="ir.ui.view">
+        <field name="name">mail.group.view.list.oca_membership</field>
+        <field name="model">mail.group</field>
+        <field name="inherit_id" ref="mail_group.mail_group_view_list" />
+
+        <field name="arch" type="xml">
+            <field name="moderation" position="after">
+                <field name="is_community" />
+            </field>
+        </field>
+    </record>
+
+    <!-- Form -->
+    <record id="mail_group_view_form" model="ir.ui.view">
+        <field name="name">mail.group.view.form.oca_membership</field>
+        <field name="model">mail.group</field>
+        <field name="inherit_id" ref="mail_group.mail_group_view_form" />
+        
+        <field name="arch" type="xml">
+            <field name="moderation" position="after">
+                <field name="is_community" widget="boolean_toggle" />
+            </field>
+        </field>
+    </record>
+    
     <!-- New entry menu 'Communities' in Membership app -->
     <menuitem
         name="Communities"

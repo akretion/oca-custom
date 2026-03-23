@@ -26,8 +26,8 @@
         <field name="inherit_id" ref="base.view_partner_form"/>
         
         <field name="arch" type="xml">
-            <field name="vat" position="after">
-                <field name="is_published" widget="boolean_toggles" invisible="not can_be_published" />
+            <field name="category_id" position="after">
+                <field name="is_published" widget="boolean_toggle" invisible="not can_be_published" />
             </field>
         </field>
     </record>

@@ -3,7 +3,14 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 
+from typing import TypedDict
 from extendable_pydantic import StrictExtendableBaseModel
+
+
+class VcpRepository(TypedDict):
+    id: int
+    name: str
+    description: str
 
 
 class VcpOdooModuleVersion(StrictExtendableBaseModel):

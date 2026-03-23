@@ -5,21 +5,12 @@
 from odoo.addons.search_engine_serializer_pydantic.tools.serializer import (
     PydanticModelSerializer,
 )
-from ..schemas import Company, Person
+from ..schemas import Psc
 
 
-class CompanySerializer(PydanticModelSerializer):
+class PscSerializer(PydanticModelSerializer):
     def get_model_class(self):
-        return Company
-
-    def serialize(self, record):
-        return (
-            self.get_model_class().from_record(record).model_dump(mode="json")
-        )
-
-class PersonSerializer(PydanticModelSerializer):
-    def get_model_class(self):
-        return Person
+        return Psc
 
     def serialize(self, record):
         return (

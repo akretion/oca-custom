@@ -56,7 +56,7 @@
 
             <!-- Add dedicated "Sponsorship" page -->
             <page name="membership" position="after">
-                <page name="sponsorship" string="Sponsorship">
+                <page name="sponsorship" string="Sponsorship" invisible="not is_company">
 
                     <button name="button_sponsor_review_accept" type="object"
                         string="Publish new changes to the website"

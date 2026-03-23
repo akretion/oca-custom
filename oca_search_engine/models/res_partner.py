@@ -5,12 +5,18 @@
 from odoo import models, api, fields, Command
 
 INDEX_COMPANIES = "oca_search_engine.oca_typesense_index_companies"
+INDEX_PERSONS = "oca_search_engine.oca_typesense_index_persons"
 
 class ResPartner(models.Model):
     _name = "res.partner"
-    _inherit = ["res.partner", "se.indexable.record"]
+    _inherit = ["res.partner", "se.indexable.record", "abstract.url"]
 
-    is_published = fields.Boolean(tracking=True,)
+    is_published = fields.Boolean(
+        tracking=True,
+        help="Whether this contact publicly appears on the website.\n"
+             "Automatically enabled for companies (sponsors and integrators).\n"
+             "To enable manually for individuals (members).",
+    )
     can_be_published = fields.Boolean(
         compute="_compute_can_be_published",
         search="_search_can_be_published",
@@ -19,19 +25,20 @@ class ResPartner(models.Model):
         comodel_name="mail.group.member",
         inverse_name="partner_id",
     )
-    slug_history_ids = fields.One2many(
-        comodel_name="res.partner.slug",
-        inverse_name="partner_id",
-        string="URL Keys",
-        help="A URL Key is computed from the partner name and forms the last part of the"
-             " partner URL page in the website. Keeping history helps to redirect"
-             " former company URL to the new one."
-    )
     
     def _add_to_oca_search_engine(self):
         """Add records or update fields in the index"""
         to_synch = self.filtered(lambda x: x._filter_add_to_oca_search_engine())
-        to_synch._add_to_index(self.env.ref(INDEX_COMPANIES))
+        companies = to_synch.filtered("is_company")
+        individuals = to_synch - companies
+        companies._add_to_index(self.env.ref(INDEX_COMPANIES))
+        individuals._add_to_index(self.env.ref(INDEX_PERSONS))
+    
+    def _remove_from_oca_search_engine(self):
+        companies = self.filtered("is_company")
+        individuals = self - companies
+        companies._remove_from_index(self.env.ref(INDEX_COMPANIES))
+        individuals._remove_from_index(self.env.ref(INDEX_PERSONS))
 
     def _filter_add_to_oca_search_engine(self):
         return self.can_be_published and self.is_published
@@ -80,15 +87,11 @@ class ResPartner(models.Model):
         return records
 
     def write(self, vals):
-        # Slug history
-        if "name" in vals and fields.first(self).name != vals["name"]:
-            self._add_slug_history()
-        
         res = super().write(vals)
 
         # Remove
-        if "is_published" in vals and not vals["is_published"]:
-            self._remove_from_index(self.env.ref(INDEX_COMPANIES))
+        if not self._filter_add_to_oca_search_engine():
+            self._remove_from_oca_search_engine()
         else:
             self._autopublish_companies(vals)
 
@@ -109,12 +112,6 @@ class ResPartner(models.Model):
         # Sync (add or update)
         self._add_to_oca_search_engine()
 
-    def _add_slug_history(self):
-        companies = self.filtered(lambda x: x.is_sponsor)
-        for partner in companies:
-            slug = partner._get_slug()
-            if slug not in partner.slug_history_ids.mapped("name"):
-                partner.slug_history_ids = [Command.create({"name": slug})]
     def _get_slug(self):
         self.ensure_one()
         return self.env['ir.http']._slugify(self.name)

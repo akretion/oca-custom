@@ -6,8 +6,8 @@ from odoo import fields, models
 class MailGroup(models.Model):
     _inherit = ["mail.group"]
 
-    is_publish = fields.Boolean(
-        string="OCA website",
+    is_community = fields.Boolean(
+        string="Is a community",
         default=False,
-        help="Whether to be visible on the Members page, on the OCA website",
+        help="Communities are visible on the website page, on member profile.",
     )

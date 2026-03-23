@@ -17,6 +17,11 @@
             <xpath expr="//field[@name='membership_category_ids' and @widget='many2many_tags']" position="before">
                 <field name="membership_category_id" />
             </xpath>
+
+            <!-- Add `mail_group_ids` -->
+            <xpath expr="//page[@name='membership']/group/group" position="inside">
+                <field name="mail_group_ids" widget="many2many_tags" />
+            </xpath>
         </field>
     </record>
 
