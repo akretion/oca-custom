@@ -80,7 +80,10 @@ class ResPartner(models.Model):
         string="Blog posts",
         comodel_name="blog.post",
         inverse_name="author_id",
-        domain="[('author_id', '=', id)]"
+    )
+    blog_post_count = fields.Integer(
+        string="Blog posts count",
+        compute="_compute_blog_post_count",
     )
 
     #====== Compute ======#
@@ -125,6 +128,11 @@ class ResPartner(models.Model):
             if old != new and old in sponsor[sponsor_field]:
                 sponsor[sponsor_field] -= old
     
+    @api.depends("blog_post_ids")
+    def _compute_blog_post_count(self):
+        for partner in self:
+            partner.blog_post_count = len(partner.blog_post_ids)
+
     #====== CRUD ======#
     def write(self, vals):
         """Set in review the sponsor whose relevant data changed"""
@@ -169,6 +177,15 @@ class ResPartner(models.Model):
             ))
         self._sponsor_review_accept()
     
+    def action_open_blog_post(self):
+        return {
+            'name': _("Blog posts"),
+            'type': 'ir.actions.act_window',
+            'res_model': "blog.post",
+            'view_mode': 'list,form',
+            'domain': [("author_id", "=", self.id)],
+        }
+
     def _sponsor_review_accept(self):
         # Re-enable syncing
         self.sudo().write({ # 'sudo' to bypass AccessError of 'website.published.multi.mixin'

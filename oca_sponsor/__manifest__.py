@@ -21,6 +21,7 @@
         # data
         "data/mail_activity_data.xml",
         # views
+        "views/blog_post.xml",
         "views/res_partner_industry.xml",
         "views/res_partner.xml",
         "views/sponsorship_line.xml",

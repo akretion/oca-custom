@@ -44,7 +44,7 @@ class VcpOcaPsc(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         return super().create(vals_list)._add_to_oca_search_engine()
-    
+
     def write(self, vals):
         res = super().write(vals)
         self._add_to_oca_search_engine()

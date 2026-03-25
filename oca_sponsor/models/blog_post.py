@@ -10,7 +10,7 @@ class BlogPost(models.Model):
 
     @api.model_create_multi
     def create(self, vals_list):
-        self.author_id._set_sponsor_to_review()
+        self._refresh_sponsor_search_engine()
         return super().create(vals_list)
 
     def write(self, vals):

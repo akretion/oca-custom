@@ -42,7 +42,7 @@ class PersonBase(StrictExtendableBaseModel):
     @classmethod
     def from_record(cls, record):
         return cls.model_construct(**cls._model_construct_dict(record))
-
+    
     @classmethod
     def _model_construct_dict(cls, record):
         return {

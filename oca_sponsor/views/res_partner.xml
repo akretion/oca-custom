@@ -54,6 +54,18 @@
                 </div>
             </sheet>
 
+            <!-- Add Smart Button for blog posts -->
+            <div name="button_box" position="inside">
+                <button
+                    type="object"
+                    class="oe_stat_button"
+                    name="action_open_blog_post"
+                    icon="fa-globe"
+                >
+                    <field name="blog_post_count" string="Blog posts" widget="statinfo"/>
+                </button>
+            </div>
+
             <!-- Add dedicated "Sponsorship" page -->
             <page name="membership" position="after">
                 <page name="sponsorship" string="Sponsorship" invisible="not is_company">
@@ -70,9 +82,6 @@
                     <group name="oca_sponsor_config" string="Sponsor configuration" col="12">
                         <group colspan="5">
                             <field name="grade_id" />
-                            <field name="blog_post_ids" widget="many2many_tags"
-                                context="{'default_author_id': id}"
-                            />
                             <field name="sponsor_country_ids" widget="many2many_tags" />
                             <field name="sponsor_industry_ids" widget="many2many_tags" />
                         </group>
