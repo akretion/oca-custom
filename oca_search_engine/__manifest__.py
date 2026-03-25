@@ -14,7 +14,9 @@
     "license": "AGPL-3",
     "external_dependencies": {
         "python": [
-            "extendable_pydantic", "pyyaml",
+            "extendable_pydantic",
+            "pypandoc",
+            "pyyaml",
         ],
         "bin": [],
     },

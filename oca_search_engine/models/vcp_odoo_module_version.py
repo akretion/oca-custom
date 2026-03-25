@@ -3,12 +3,15 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 
-from odoo import models
+from odoo import fields, models
 
 
 class VcpOdooModuleVersion(models.Model):
     _name = "vcp.odoo.module.version"
     _inherit = ["vcp.odoo.module.version", "se.indexable.record"]
+
+    readme_fragments = fields.Json()
+
     
     def _add_to_oca_search_engine(self):
         self._add_to_index(self.env.ref("oca_search_engine.oca_typesense_index_module"))
