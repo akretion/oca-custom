@@ -12,6 +12,7 @@ class VcpOdooModuleVersion(models.Model):
 
     readme_fragments = fields.Json()
 
+    
     def _add_to_oca_search_engine(self):
         self._add_to_index(self.env.ref("oca_search_engine.oca_typesense_index_module"))
 

@@ -158,7 +158,7 @@ There is two different goals:
 Run tests using pytest launcher.
 
 ```bash
-uv run pytest --odoo-database oca-custom --cov ./oca_psc_team/ oca_psc_team/
+uv run pytest --odoo-database oca-custom --cov ./vcp_oca_psc/ vcp_oca_psc/
 ```
 
 #### Update OCB Branch

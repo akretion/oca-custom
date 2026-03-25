@@ -12,6 +12,9 @@
     ],
     "license": "AGPL-3",
     "depends": [
+        # Test/dev
+        "database_cleanup",
+        "database_size",
         # Odoo
         "account",
         "account_payment",
@@ -151,8 +154,6 @@
         "multi_step_wizard",
         "partner_statement",
         "project_task_add_very_high",
-        "oca_custom",
-        "oca_search_engine",
         "partner_contact_access_link",
         "pdf_xml_attachment",
         "project_role",
@@ -168,10 +169,14 @@
         "web_refresher",
         "web_search_with_and",
         "web_widget_dropdown_dynamic",
-        "website_oca_integrator",
         "website_sale_hide_empty_category",
-        #custom
+        # Custom
         "oca_website",
+        "oca_custom",
+        "oca_sponsor",
+        "oca_membership",
+        "oca_search_engine",
+        "website_oca_integrator",
         "website_sale_oca_apps",
     ],
     "installable": True,

@@ -788,6 +788,8 @@ dependencies = [
     { name = "odoo-addon-crowdfunding" },
     { name = "odoo-addon-crowdfunding-public-pledge" },
     { name = "odoo-addon-currency-rate-update" },
+    { name = "odoo-addon-database-cleanup" },
+    { name = "odoo-addon-database-size" },
     { name = "odoo-addon-date-range" },
     { name = "odoo-addon-date-range-account" },
     { name = "odoo-addon-disable-odoo-online" },
@@ -815,6 +817,7 @@ dependencies = [
     { name = "odoo-addon-search-engine-serializer-pydantic" },
     { name = "odoo-addon-sentry" },
     { name = "odoo-addon-server-action-mass-edit" },
+    { name = "odoo-addon-shopinvader-base-url" },
     { name = "odoo-addon-sql-request-abstract" },
     { name = "odoo-addon-survey-xlsx" },
     { name = "odoo-addon-uom-unece" },
@@ -845,6 +848,7 @@ dependencies = [
     { name = "python-stdnum" },
     { name = "pytz" },
     { name = "pyusb" },
+    { name = "pyyaml" },
     { name = "qrcode" },
     { name = "reportlab" },
     { name = "requests" },
@@ -928,6 +932,8 @@ requires-dist = [
     { name = "odoo-addon-crowdfunding", git = "https://github.com/hbrunn/crowdfunding?subdirectory=crowdfunding&branch=18.0-mig-crowdfunding" },
     { name = "odoo-addon-crowdfunding-public-pledge", git = "https://github.com/hbrunn/crowdfunding?subdirectory=crowdfunding_public_pledge&branch=18.0-mig-crowdfunding" },
     { name = "odoo-addon-currency-rate-update", specifier = "==18.0.*" },
+    { name = "odoo-addon-database-cleanup", specifier = "==18.0.*" },
+    { name = "odoo-addon-database-size", specifier = "==18.0.*" },
     { name = "odoo-addon-date-range", specifier = "==18.0.*" },
     { name = "odoo-addon-date-range-account", specifier = "==18.0.*" },
     { name = "odoo-addon-disable-odoo-online", specifier = "==18.0.*" },
@@ -955,6 +961,7 @@ requires-dist = [
     { name = "odoo-addon-search-engine-serializer-pydantic", specifier = "==18.0.*" },
     { name = "odoo-addon-sentry", specifier = "==18.0.*" },
     { name = "odoo-addon-server-action-mass-edit", specifier = "==18.0.*" },
+    { name = "odoo-addon-shopinvader-base-url", git = "https://github.com/shopinvader/odoo-shopinvader-catalog?subdirectory=shopinvader_base_url&branch=18.0-mig-shopinvader_base_url" },
     { name = "odoo-addon-sql-request-abstract", specifier = "==18.0.*" },
     { name = "odoo-addon-survey-xlsx", specifier = "==18.0.*" },
     { name = "odoo-addon-uom-unece", specifier = "==18.0.*" },
@@ -985,6 +992,7 @@ requires-dist = [
     { name = "python-stdnum", specifier = "==1.19" },
     { name = "pytz" },
     { name = "pyusb", specifier = "==1.2.1" },
+    { name = "pyyaml" },
     { name = "qrcode", specifier = "==7.4.2" },
     { name = "reportlab", specifier = "==4.1.0" },
     { name = "requests", specifier = "==2.31.0" },
@@ -1397,6 +1405,17 @@ wheels = [
 ]
 
 [[package]]
+name = "odoo-addon-base-sparse-field-list-support"
+version = "18.0.1.0.0.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "odoo" },
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/85/64/d8219cbf96380c5840396ca439f6b2bb486d6eee93971164b0792033ebe5/odoo_addon_base_sparse_field_list_support-18.0.1.0.0.2-py3-none-any.whl", hash = "sha256:6ae9080ccb5ac2e6f7224bdaab8db64856ae07dfc5dda2061340c5dcedb4b90e", size = 21054, upload-time = "2025-03-14T08:13:34.635Z" },
+]
+
+[[package]]
 name = "odoo-addon-base-technical-features"
 version = "18.0.1.0.2.1"
 source = { registry = "https://pypi.org/simple" }
@@ -1498,6 +1517,28 @@ dependencies = [
 ]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/b7/7e/d17283c919afe653dc786807a8c20e4b5fa438cf6be3c31e9c623cd027a7/odoo_addon_currency_rate_update-18.0.1.0.1.15-py3-none-any.whl", hash = "sha256:ffe96c78c728c03d2780f5033663648794731e9151a8202ad86bc09ac7d0fc22", size = 245564, upload-time = "2025-11-27T02:51:35.641Z" },
+]
+
+[[package]]
+name = "odoo-addon-database-cleanup"
+version = "18.0.1.0.2.5"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "odoo" },
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/03/67/8c33f5a163617f7a5a50542895afc4f5f3462d1552b300b5b5b18516f98f/odoo_addon_database_cleanup-18.0.1.0.2.5-py3-none-any.whl", hash = "sha256:0deefe0addc8102cbbdf3542aae3a2f2517182ef9547195ebae2d65f0624c347", size = 254554, upload-time = "2026-01-23T04:22:09.503Z" },
+]
+
+[[package]]
+name = "odoo-addon-database-size"
+version = "18.0.1.0.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "odoo" },
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/69/a8/f53b6b465b22b5d431e93bcc21541c6b958a3c0aa34dabda516a78e60f81/odoo_addon_database_size-18.0.1.0.2-py3-none-any.whl", hash = "sha256:18d661d234b9a1c7b76da45f625e52a49e50e1b8339c53bc024a328c85396e21", size = 240598, upload-time = "2025-10-01T10:52:39.338Z" },
 ]
 
 [[package]]
@@ -1870,6 +1911,16 @@ dependencies = [
 ]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/23/e9/f89a82bfc484693c7f31a7c7ec351a10c368e010e00ec52218386703d812/odoo_addon_server_environment-18.0.1.0.6.1-py3-none-any.whl", hash = "sha256:d47017468e7d7b153fd67853a220fc1da649d70f828ca77c437478402500e182", size = 201571, upload-time = "2026-03-06T04:06:12.818Z" },
+]
+
+[[package]]
+name = "odoo-addon-shopinvader-base-url"
+version = "18.0.1.0.0.1"
+source = { git = "https://github.com/shopinvader/odoo-shopinvader-catalog?subdirectory=shopinvader_base_url&branch=18.0-mig-shopinvader_base_url#6fab67fae1f7fa349a67c8036a6946326d25e806" }
+dependencies = [
+    { name = "odoo" },
+    { name = "odoo-addon-base-sparse-field-list-support" },
+    { name = "python-slugify" },
 ]
 
 [[package]]
@@ -2416,6 +2467,18 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/fd/8b/1eeb4025dc1d3ac2f16678f38dec9ebdde6271c74955b72db5ce7a4dbfbd/python-ldap-3.4.4.tar.gz", hash = "sha256:7edb0accec4e037797705f3a05cbf36a9fde50d08c8f67f2aef99a2628fab828", size = 377889, upload-time = "2023-11-17T21:14:16.32Z" }
 
 [[package]]
+name = "python-slugify"
+version = "8.0.4"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "text-unidecode" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/87/c7/5e1547c44e31da50a460df93af11a535ace568ef89d7a811069ead340c4a/python-slugify-8.0.4.tar.gz", hash = "sha256:59202371d1d05b54a9e7720c5e038f928f45daaffe41dd10822f3907b937c856", size = 10921, upload-time = "2024-02-08T18:32:45.488Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/a4/62/02da182e544a51a5c3ccf4b03ab79df279f9c60c5e82d5e8bec7ca26ac11/python_slugify-8.0.4-py2.py3-none-any.whl", hash = "sha256:276540b79961052b66b7d116620b36518847f52d5fd9e3a70164fc8c50faa6b8", size = 10051, upload-time = "2024-02-08T18:32:43.911Z" },
+]
+
+[[package]]
 name = "python-stdnum"
 version = "1.19"
 source = { registry = "https://pypi.org/simple" }
@@ -2606,6 +2669,15 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/89/23/adf3796d740536d63a6fbda113d07e60c734b6ed5d3058d1e47fc0495e47/soupsieve-2.8.1.tar.gz", hash = "sha256:4cf733bc50fa805f5df4b8ef4740fc0e0fa6218cf3006269afd3f9d6d80fd350", size = 117856, upload-time = "2025-12-18T13:50:34.655Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/48/f3/b67d6ea49ca9154453b6d70b34ea22f3996b9fa55da105a79d8732227adc/soupsieve-2.8.1-py3-none-any.whl", hash = "sha256:a11fe2a6f3d76ab3cf2de04eb339c1be5b506a8a47f2ceb6d139803177f85434", size = 36710, upload-time = "2025-12-18T13:50:33.267Z" },
+]
+
+[[package]]
+name = "text-unidecode"
+version = "1.3"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/ab/e2/e9a00f0ccb71718418230718b3d900e71a5d16e701a3dae079a21e9cd8f8/text-unidecode-1.3.tar.gz", hash = "sha256:bad6603bb14d279193107714b288be206cac565dfa49aa5b105294dd5c4aab93", size = 76885, upload-time = "2019-08-30T21:36:45.405Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/a6/a5/c0b6468d3824fe3fde30dbb5e1f687b291608f9473681bbf7dabbf5a87d7/text_unidecode-1.3-py2.py3-none-any.whl", hash = "sha256:1311f10e8b895935241623731c2ba64f4c455287888b18189350b67134a822e8", size = 78154, upload-time = "2019-08-30T21:37:03.543Z" },
 ]
 
 [[package]]

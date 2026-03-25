@@ -16,22 +16,37 @@
         "python": [
             "extendable_pydantic",
             "pypandoc",
+            "pyyaml",
         ],
         "bin": [],
     },
     "depends": [
         "connector_typesense",
+        "membership",
         "search_engine_serializer_pydantic",
         "vcp_odoo",
         "vcp_github",
+        # custom
+        "oca_sponsor",
+        "oca_membership",
+        "website_oca_integrator",
         # following dependency are needed by uv to resolve the dep
         # correctly as module are not merged
         "connector_search_engine",
         "vcp_management",
+        "shopinvader_base_url", # TODO: switch to 'base_url' @arnaudlayec @sebastienbeau
     ],
     "data": [
+        # data
         "data/backend_data.xml",
         "data/index_data.xml",
+        "data/membership_category_data.xml",
+        "data/vcp_oca.xml",
+        # security
+        "security/ir.model.access.csv",
+        # views
+        "views/res_partner.xml",
     ],
     "demo": [],
+    "post_init_hook": "post_init_hook",
 }

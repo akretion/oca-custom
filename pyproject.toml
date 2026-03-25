@@ -112,6 +112,14 @@ odoo-addon-account_statement_import_online_wise = { git = "https://github.com/Th
 odoo-addon-account_banking_pain_base = { git = "https://github.com/Therp/bank-payment", branch = "18.0-mig-account_banking_pain_base_sepa_hybrid_extended_for_09", subdirectory = "account_banking_pain_base" }
 odoo-addon-account_banking_sepa_credit_transfer = { git = "https://github.com/Therp/bank-payment", branch = "18.0-mig-account_banking_pain_base_sepa_hybrid_extended_for_09", subdirectory = "account_banking_sepa_credit_transfer" }
 
+# Search engine module
+odoo-addon-connector-search-engine = { git = "https://github.com/akretion/search-engine", branch="18.0-mig-connector_search_engine", subdirectory="connector_search_engine" }
+odoo-addon-search-engine-serializer-pydantic = { git = "https://github.com/akretion/search-engine", branch="18.0-mig-search_engine_serializer_pydantic", subdirectory="search_engine_serializer_pydantic" }
+odoo-addon-connector-typesense = { git = "https://github.com/akretion/search-engine", branch="18.0-mig-connector_typesense", subdirectory="connector_typesense" }
+
+# Shopinvader (TEMP)
+odoo-addon-shopinvader-base-url = { git = "https://github.com/shopinvader/odoo-shopinvader-catalog", branch="18.0-mig-shopinvader_base_url", subdirectory="shopinvader_base_url" }
+
 # VCP module
 odoo-addon-vcp-management = { git = "https://github.com/dixmit/version-control-platform", branch="18.0-add-vcp", subdirectory="vcp_management" }
 odoo-addon-vcp-github = { git = "https://github.com/dixmit/version-control-platform", branch="18.0-add-vcp", subdirectory="vcp_github" }
