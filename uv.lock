@@ -782,6 +782,7 @@ dependencies = [
     { name = "odoo-addon-base-technical-features" },
     { name = "odoo-addon-base-ubl" },
     { name = "odoo-addon-base-unece" },
+    { name = "odoo-addon-base-url" },
     { name = "odoo-addon-bi-sql-editor" },
     { name = "odoo-addon-connector-typesense" },
     { name = "odoo-addon-crowdfunding" },
@@ -815,7 +816,6 @@ dependencies = [
     { name = "odoo-addon-search-engine-serializer-pydantic" },
     { name = "odoo-addon-sentry" },
     { name = "odoo-addon-server-action-mass-edit" },
-    { name = "odoo-addon-shopinvader-base-url" },
     { name = "odoo-addon-sql-request-abstract" },
     { name = "odoo-addon-survey-xlsx" },
     { name = "odoo-addon-uom-unece" },
@@ -925,6 +925,7 @@ requires-dist = [
     { name = "odoo-addon-base-technical-features", specifier = "==18.0.*" },
     { name = "odoo-addon-base-ubl", specifier = "==18.0.*" },
     { name = "odoo-addon-base-unece", specifier = "==18.0.*" },
+    { name = "odoo-addon-base-url", git = "https://github.com/akretion/server-tools?subdirectory=base_url&branch=18.0-add-url-2" },
     { name = "odoo-addon-bi-sql-editor", specifier = "==18.0.*" },
     { name = "odoo-addon-connector-typesense", specifier = "==18.0.*" },
     { name = "odoo-addon-crowdfunding", git = "https://github.com/hbrunn/crowdfunding?subdirectory=crowdfunding&branch=18.0-mig-crowdfunding" },
@@ -958,14 +959,13 @@ requires-dist = [
     { name = "odoo-addon-search-engine-serializer-pydantic", specifier = "==18.0.*" },
     { name = "odoo-addon-sentry", specifier = "==18.0.*" },
     { name = "odoo-addon-server-action-mass-edit", specifier = "==18.0.*" },
-    { name = "odoo-addon-shopinvader-base-url", git = "https://github.com/shopinvader/odoo-shopinvader-catalog?subdirectory=shopinvader_base_url&branch=18.0-mig-shopinvader_base_url" },
     { name = "odoo-addon-sql-request-abstract", specifier = "==18.0.*" },
     { name = "odoo-addon-survey-xlsx", specifier = "==18.0.*" },
     { name = "odoo-addon-uom-unece", specifier = "==18.0.*" },
-    { name = "odoo-addon-vcp-git", git = "https://github.com/dixmit/version-control-platform?subdirectory=vcp_git&branch=18.0-add-vcp" },
-    { name = "odoo-addon-vcp-github", git = "https://github.com/dixmit/version-control-platform?subdirectory=vcp_github&branch=18.0-add-vcp" },
-    { name = "odoo-addon-vcp-management", git = "https://github.com/dixmit/version-control-platform?subdirectory=vcp_management&branch=18.0-add-vcp" },
-    { name = "odoo-addon-vcp-odoo", git = "https://github.com/dixmit/version-control-platform?subdirectory=vcp_odoo&branch=18.0-add-vcp" },
+    { name = "odoo-addon-vcp-git", git = "https://github.com/akretion/version-control-platform?subdirectory=vcp_git&branch=18.0-vcp-improve" },
+    { name = "odoo-addon-vcp-github", git = "https://github.com/akretion/version-control-platform?subdirectory=vcp_github&branch=18.0-vcp-improve" },
+    { name = "odoo-addon-vcp-management", git = "https://github.com/akretion/version-control-platform?subdirectory=vcp_management&branch=18.0-vcp-improve" },
+    { name = "odoo-addon-vcp-odoo", git = "https://github.com/akretion/version-control-platform?subdirectory=vcp_odoo&branch=18.0-vcp-improve" },
     { name = "odoo-addon-web-refresher", specifier = "==18.0.*" },
     { name = "odoo-addon-web-responsive", specifier = "==18.0.*" },
     { name = "odoo-addon-web-search-with-and", specifier = "==18.0.*" },
@@ -1447,6 +1447,16 @@ wheels = [
 ]
 
 [[package]]
+name = "odoo-addon-base-url"
+version = "18.0.1.0.0.2"
+source = { git = "https://github.com/akretion/server-tools?subdirectory=base_url&branch=18.0-add-url-2#649263b895668a92b4a065e4394dad74389b3741" }
+dependencies = [
+    { name = "odoo" },
+    { name = "odoo-addon-base-sparse-field-list-support" },
+    { name = "python-slugify" },
+]
+
+[[package]]
 name = "odoo-addon-bi-sql-editor"
 version = "18.0.1.0.4.3"
 source = { registry = "https://pypi.org/simple" }
@@ -1901,16 +1911,6 @@ wheels = [
 ]
 
 [[package]]
-name = "odoo-addon-shopinvader-base-url"
-version = "18.0.1.0.0.1"
-source = { git = "https://github.com/shopinvader/odoo-shopinvader-catalog?subdirectory=shopinvader_base_url&branch=18.0-mig-shopinvader_base_url#62864a9b82bc9f2207685ea065a33826bc49593a" }
-dependencies = [
-    { name = "odoo" },
-    { name = "odoo-addon-base-sparse-field-list-support" },
-    { name = "python-slugify" },
-]
-
-[[package]]
 name = "odoo-addon-sql-request-abstract"
 version = "18.0.1.0.0.12"
 source = { registry = "https://pypi.org/simple" }
@@ -1946,8 +1946,8 @@ wheels = [
 
 [[package]]
 name = "odoo-addon-vcp-git"
-version = "18.0.1.0.0"
-source = { git = "https://github.com/dixmit/version-control-platform?subdirectory=vcp_git&branch=18.0-add-vcp#f085daf3819658dd3ef779bf797e2cb74a8029fc" }
+version = "18.0.1.0.0.2"
+source = { git = "https://github.com/akretion/version-control-platform?subdirectory=vcp_git&branch=18.0-vcp-improve#8557a1d54888f8431a52fe1e0036dc0e3d7d0021" }
 dependencies = [
     { name = "gitpython" },
     { name = "odoo" },
@@ -1956,8 +1956,8 @@ dependencies = [
 
 [[package]]
 name = "odoo-addon-vcp-github"
-version = "18.0.1.0.0.4"
-source = { git = "https://github.com/dixmit/version-control-platform?subdirectory=vcp_github&branch=18.0-add-vcp#f085daf3819658dd3ef779bf797e2cb74a8029fc" }
+version = "18.0.1.0.0.8"
+source = { git = "https://github.com/akretion/version-control-platform?subdirectory=vcp_github&branch=18.0-vcp-improve#8557a1d54888f8431a52fe1e0036dc0e3d7d0021" }
 dependencies = [
     { name = "github3-py" },
     { name = "markdown" },
@@ -1967,8 +1967,8 @@ dependencies = [
 
 [[package]]
 name = "odoo-addon-vcp-management"
-version = "18.0.1.0.0.8"
-source = { git = "https://github.com/dixmit/version-control-platform?subdirectory=vcp_management&branch=18.0-add-vcp#f085daf3819658dd3ef779bf797e2cb74a8029fc" }
+version = "18.0.1.0.0.12"
+source = { git = "https://github.com/akretion/version-control-platform?subdirectory=vcp_management&branch=18.0-vcp-improve#8557a1d54888f8431a52fe1e0036dc0e3d7d0021" }
 dependencies = [
     { name = "odoo" },
     { name = "pathspec" },
@@ -1976,8 +1976,8 @@ dependencies = [
 
 [[package]]
 name = "odoo-addon-vcp-odoo"
-version = "18.0.1.0.0.2"
-source = { git = "https://github.com/dixmit/version-control-platform?subdirectory=vcp_odoo&branch=18.0-add-vcp#f085daf3819658dd3ef779bf797e2cb74a8029fc" }
+version = "18.0.1.0.0.10"
+source = { git = "https://github.com/akretion/version-control-platform?subdirectory=vcp_odoo&branch=18.0-vcp-improve#8557a1d54888f8431a52fe1e0036dc0e3d7d0021" }
 dependencies = [
     { name = "odoo" },
     { name = "odoo-addon-vcp-management" },
