@@ -152,7 +152,6 @@
         "multi_step_wizard",
         "partner_statement",
         "project_task_add_very_high",
-        "oca_custom",
         "oca_search_engine",
         "partner_contact_access_link",
         "pdf_xml_attachment",
@@ -171,7 +170,6 @@
         "web_widget_dropdown_dynamic",
         "website_sale_hide_empty_category",
         # Custom
-        "oca_custom",
         "oca_membership",
         "oca_search_engine",
         "oca_sponsor",
