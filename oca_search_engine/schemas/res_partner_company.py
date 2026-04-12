@@ -5,7 +5,7 @@
 
 from extendable_pydantic import StrictExtendableBaseModel
 
-from odoo import _, exceptions
+from odoo import exceptions
 
 from .res_partner_common import Country, LogoUrls
 
@@ -103,7 +103,7 @@ class Company(StrictExtendableBaseModel):
             # This Exception is catched by `recompute_json` and set the bindings'
             # `state` of the to-be-reviewed sponsors in error
             raise exceptions.ValidationError(
-                _(
+                record.env._(
                     "The information of this sponsor were updated and are pending a "
                     "review, thus this operation was blocked."
                 )
