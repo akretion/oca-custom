@@ -1012,7 +1012,7 @@ dev = [
     { name = "parameterized", specifier = ">=0.9.0" },
     { name = "pytest", specifier = ">8" },
     { name = "pytest-cov", specifier = ">=5.0.0" },
-    { name = "pytest-odoo", specifier = "==2.1.2" },
+    { name = "pytest-odoo", specifier = "==2.1.3" },
     { name = "pytest-xdist", specifier = ">=3.6.1" },
     { name = "vcrpy-unittest" },
     { name = "websocket-client" },
@@ -2417,14 +2417,14 @@ wheels = [
 
 [[package]]
 name = "pytest-odoo"
-version = "2.1.2"
+version = "2.1.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "pytest" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/5a/cc/fb1bb767db03873dfd1e74956049ac2235291deb37a5190379dc3ec64f19/pytest_odoo-2.1.2.tar.gz", hash = "sha256:f8f542e5e3b17f8150bc32beb36b340e7fb6c59b5a9dedce35c021097ad98456", size = 20040, upload-time = "2025-03-12T14:17:23.323Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/84/c3/430684a80c0448f241397341d361801c901846c947f79815e639572d3585/pytest_odoo-2.1.3.tar.gz", hash = "sha256:788d6cc500d33624a789e729f41c995e8f829b3ee8596cef0d4b4800981058ec", size = 20591, upload-time = "2025-05-20T13:00:01.464Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/4a/91/b11505eb2c2b3d85df86ddf72de8464d721cc6de6b5d06dad1204065e1c7/pytest_odoo-2.1.2-py3-none-any.whl", hash = "sha256:552926e4709835fc5314da21041d97d7ade1f4224cb767e5c3e4db8a272bd83d", size = 17937, upload-time = "2025-03-12T14:17:21.722Z" },
+    { url = "https://files.pythonhosted.org/packages/fd/20/86dab4d2b051fcf93aadf69a10a839015d4ab62d281740fa4357bed24b44/pytest_odoo-2.1.3-py3-none-any.whl", hash = "sha256:20295d8eab4b15f946bb04f54709d8326ba97d6ba30436903fa461a022de8386", size = 18162, upload-time = "2025-05-20T12:59:59.878Z" },
 ]
 
 [[package]]
