@@ -14,7 +14,7 @@
         # "contacts",
         # "github_connector",
         # "membership",
-        # "mail_group",
+        "mail_group",
     ],
     "data": [
         # "data/ir_cron_data.xml",
