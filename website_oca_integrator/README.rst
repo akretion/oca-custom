@@ -28,7 +28,7 @@ Website OCA Integrator
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
-This module adds menu "Integrators" in website, which displays
+This module added a menu "Integrators" in website, which displays
 integrators, contributors, members and modules related information.
 
 **Table of contents**
