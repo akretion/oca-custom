@@ -770,6 +770,7 @@ dependencies = [
     { name = "odoo-addon-account-credit-control" },
     { name = "odoo-addon-account-financial-report" },
     { name = "odoo-addon-account-invoice-overdue-reminder" },
+    { name = "odoo-addon-account-invoice-start-end-dates" },
     { name = "odoo-addon-account-lock-to-date" },
     { name = "odoo-addon-account-payment-method-base-mode" },
     { name = "odoo-addon-account-payment-mode" },
@@ -808,7 +809,6 @@ dependencies = [
     { name = "odoo-addon-membership-account-invoice-start-end-dates" },
     { name = "odoo-addon-membership-delegated-partner-line" },
     { name = "odoo-addon-membership-extension" },
-    { name = "odoo-addon-membership-variable-period" },
     { name = "odoo-addon-mis-builder" },
     { name = "odoo-addon-mis-builder-budget" },
     { name = "odoo-addon-mis-builder-cash-flow" },
@@ -829,6 +829,7 @@ dependencies = [
     { name = "odoo-addon-sentry" },
     { name = "odoo-addon-server-action-mass-edit" },
     { name = "odoo-addon-sql-request-abstract" },
+    { name = "odoo-addon-subscription-oca" },
     { name = "odoo-addon-survey-xlsx" },
     { name = "odoo-addon-uom-unece" },
     { name = "odoo-addon-vcp-github" },
@@ -914,6 +915,7 @@ requires-dist = [
     { name = "odoo-addon-account-credit-control", specifier = "==18.0.*" },
     { name = "odoo-addon-account-financial-report", specifier = "==18.0.*" },
     { name = "odoo-addon-account-invoice-overdue-reminder", specifier = "==18.0.*" },
+    { name = "odoo-addon-account-invoice-start-end-dates", specifier = "==18.0.*" },
     { name = "odoo-addon-account-lock-to-date", specifier = "==18.0.*" },
     { name = "odoo-addon-account-payment-method-base-mode", specifier = "==18.0.*" },
     { name = "odoo-addon-account-payment-mode", specifier = "==18.0.*" },
@@ -952,7 +954,6 @@ requires-dist = [
     { name = "odoo-addon-membership-account-invoice-start-end-dates", git = "https://github.com/akretion/vertical-association?subdirectory=membership_account_invoice_start_end_dates&branch=18.0-add-membership-start-end-date2" },
     { name = "odoo-addon-membership-delegated-partner-line", git = "https://github.com/gfcapalbo/vertical-association?subdirectory=membership_delegated_partner_line&branch=18.0-MIG-membership_delegated_partner_line" },
     { name = "odoo-addon-membership-extension", specifier = "==18.0.*" },
-    { name = "odoo-addon-membership-variable-period", specifier = "==18.0.*" },
     { name = "odoo-addon-mis-builder", specifier = "==18.0.*" },
     { name = "odoo-addon-mis-builder-budget", specifier = "==18.0.*" },
     { name = "odoo-addon-mis-builder-cash-flow", specifier = "==18.0.*" },
@@ -973,6 +974,7 @@ requires-dist = [
     { name = "odoo-addon-sentry", specifier = "==18.0.*" },
     { name = "odoo-addon-server-action-mass-edit", specifier = "==18.0.*" },
     { name = "odoo-addon-sql-request-abstract", specifier = "==18.0.*" },
+    { name = "odoo-addon-subscription-oca", specifier = "==18.0.*" },
     { name = "odoo-addon-survey-xlsx", specifier = "==18.0.*" },
     { name = "odoo-addon-uom-unece", specifier = "==18.0.*" },
     { name = "odoo-addon-vcp-github", specifier = "==18.0.*" },
@@ -1677,18 +1679,6 @@ wheels = [
 ]
 
 [[package]]
-name = "odoo-addon-membership-variable-period"
-version = "18.0.1.0.0.3"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "odoo" },
-    { name = "odoo-addon-membership-extension" },
-]
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/92/63/0bd5b5fbb7642b6bff50ade8b590ea3db264b4d9be99f3ce5f9e1fde99c7/odoo_addon_membership_variable_period-18.0.1.0.0.3-py3-none-any.whl", hash = "sha256:ffeb046abb3149ff99161c385b965515b032c91ad1f00986fbc1b6ab2d0c14fe", size = 131955, upload-time = "2026-05-12T04:29:52.756Z" },
-]
-
-[[package]]
 name = "odoo-addon-mis-builder"
 version = "18.0.1.8.0.4"
 source = { registry = "https://pypi.org/simple" }
@@ -1968,6 +1958,17 @@ dependencies = [
 ]
 wheels = [
     { url = "https://files.pythonhosted.org/packages/d2/6c/4c79b297e78e4edcbd004278d5ca0e411369a57a1105c41d65f87c7cde81/odoo_addon_sql_request_abstract-18.0.1.0.0.12-py3-none-any.whl", hash = "sha256:bdb61070c355fd9fba472d8f7d4b342badab6eef37633c24053524e648f852c3", size = 192765, upload-time = "2025-09-16T03:38:49.624Z" },
+]
+
+[[package]]
+name = "odoo-addon-subscription-oca"
+version = "18.0.1.0.0.3"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "odoo" },
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/61/a8/d01db02ef7543a5f3ef3690f582e055c8ef42aea880959ada00b90067143/odoo_addon_subscription_oca-18.0.1.0.0.3-py3-none-any.whl", hash = "sha256:a139ceb2d88b9568572411cdfbaf30be592d76701dfcc82b50b751d38752b390", size = 323455, upload-time = "2026-01-05T02:49:11.656Z" },
 ]
 
 [[package]]

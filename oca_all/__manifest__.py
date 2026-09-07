@@ -172,9 +172,6 @@
         "website_sale_hide_empty_category",
         # OCA Custom
         "oca_custom",
-        "connector_search_engine",
-        "connector_typesense",
-        "membership_account_invoice_start_end_dates",
         "oca_membership",
         "oca_membership_subscription",
         "oca_search_engine",
