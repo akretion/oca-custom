@@ -168,7 +168,9 @@ class Company(StrictExtendableBaseModel):
             members_count=len(members),
             modules_count=record.modules_author_count,
             # technical website fields
-            url_key=record.is_sponsor and record.url_key or None,
+            url_key=(
+                (record.is_sponsor or record.is_integrator) and record.url_key or None
+            ),
             redirect_url_key=record.redirect_url_key or [],
             # sponsorship
             sponsorship=None
