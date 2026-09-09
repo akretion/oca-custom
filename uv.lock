@@ -2,6 +2,9 @@ version = 1
 revision = 3
 requires-python = "==3.12.*"
 
+[manifest]
+constraints = [{ name = "odoo-addon-web-responsive", specifier = "==18.0.1.0.5" }]
+
 [[package]]
 name = "altcha"
 version = "2.1.0"
@@ -2093,13 +2096,13 @@ wheels = [
 
 [[package]]
 name = "odoo-addon-web-responsive"
-version = "18.0.1.0.8"
+version = "18.0.1.0.5"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "odoo" },
 ]
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/22/00/2683614123e56015af55ca04d989ba0c55ce2a871ddd89bc04bf48a7f0db/odoo_addon_web_responsive-18.0.1.0.8-py3-none-any.whl", hash = "sha256:b44607f9eca29f40b6955602f9041e2bb240c89e9164e76b9f493a5add3985e4", size = 8249617, upload-time = "2026-09-04T12:37:21.575Z" },
+    { url = "https://files.pythonhosted.org/packages/eb/4b/6b041488a22ab5a6e9e8264e5da94807a3bbc1bbbeaea8b1634434087265/odoo_addon_web_responsive-18.0.1.0.5-py3-none-any.whl", hash = "sha256:276c012078ee5d4d5fdb5f71f8e9eae81ff246e7039d3db606ef01b55b62ebff", size = 8247878, upload-time = "2026-04-17T07:04:02.911Z" },
 ]
 
 [[package]]
